@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: instafake
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn insta.wsgi:application
+    autoDeploy: true
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: insta.settings
+      # Opcional: fija la versión de Python si lo necesitas
+      # - key: PYTHON_VERSION
+      #   value: 3.13.0
